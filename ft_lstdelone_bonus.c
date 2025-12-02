@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 12:12:14 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/12/02 15:29:17 by fde-chec         ###   ########.fr       */
+/*   Created: 2025/11/11 00:37:01 by fde-chec          #+#    #+#             */
+/*   Updated: 2025/12/02 15:26:07 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /**
- * @brief Calcule la longueur d'une chaîne.
+ * @brief Supprime et libère un seul élément de liste.
  * 
- * @param s Chaîne à mesurer
- * @return Nombre de caractères avant le caractère nul
+ * @param lst Élément à supprimer
+ * @param del Fonction de suppression pour libérer le contenu
+ * @return Aucune valeur retournée (void)
  */
-size_t	ft_strlen(const char *s)
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (!lst || !del)
+		return ;
+	del(lst->content);
+	free(lst);
 }
 
 /*
-- parcourt la chaîne s jusqu'au caractère '\0'
-- compte le nombre de caractères
+- applique del sur lst->content
+- libère le nœud lst
 
 Avant / Après :
-s = "Hello"
-ft_strlen(s) → retourne 5
+lst = [A->content]
+ft_lstdelone(lst, del) → nœud supprimé, mémoire libérée
 */
+

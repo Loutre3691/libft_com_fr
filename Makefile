@@ -1,4 +1,4 @@
-.SILENT :
+#.SILENT :
 NAME = libft.a
 
 SRC = 		ft_toupper.c \
@@ -42,25 +42,23 @@ SRC = 		ft_toupper.c \
 			ft_putendl_fd.c \
 			ft_putnbr_fd.c \
 
-SRC_BONUS =	ft_lstadd_front.c \
-			ft_lstadd_back.c \
-			ft_lstsize.c \
-			ft_lstlast.c \
-			ft_lstdelone.c \
-			ft_lstnew.c \
-			ft_lstclear.c \
-			ft_lstiter.c \
-			ft_lstmap.c
+SRC_BONUS =	ft_lstadd_front_bonus.c \
+			ft_lstadd_back_bonus.c \
+			ft_lstsize_bonus.c \
+			ft_lstlast_bonus.c \
+			ft_lstdelone_bonus.c \
+			ft_lstnew_bonus.c \
+			ft_lstclear_bonus.c \
+			ft_lstiter_bonus.c \
+			ft_lstmap_bonus.c
 		
-
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 OBJ_BONUS = $(SRC_BONUS:%.c=$(OBJ_DIR)/%.o)
 OBJ_DIR = Obj
 CC = cc
 CFLAGS = -g -Wall -Wextra -Werror
-AR = ar -rcs #manipule des archives
+AR = ar -rcs
 
-#regle par defaut
 all : $(NAME)
 
 $(NAME) : $(OBJ)
@@ -78,16 +76,12 @@ bonus : $(OBJ_BONUS)
 test :
 	make && $(CC) $(CFLAGS) main.c libft.a && ./a.out
 	
-#nettoyage des fichiers objets
 clean :
 	rm -rf $(OBJ_DIR) $(OBJ_BONUS)
 
-#nettoyage complet (fichiers objets et executables)
 fclean : clean
 	rm -f $(NAME) 
 
-#refaire la compilation
 re: fclean all
 
-#s'assure qu'il cherche les comm du makefile
 .PHONY : all clean fclean re bonus test

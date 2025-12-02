@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 12:12:14 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/12/02 15:29:17 by fde-chec         ###   ########.fr       */
+/*   Created: 2025/11/11 00:07:25 by fde-chec          #+#    #+#             */
+/*   Updated: 2025/12/02 15:39:50 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /**
- * @brief Calcule la longueur d'une chaîne.
+ * @brief Compte le nombre d'éléments dans une liste chaînée.
  * 
- * @param s Chaîne à mesurer
- * @return Nombre de caractères avant le caractère nul
+ * @param lst Pointeur sur le premier élément de la liste
+ * @return Nombre d'éléments dans la liste
  */
-size_t	ft_strlen(const char *s)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int	count;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	count = 0;
+	while (lst)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
 }
 
 /*
-- parcourt la chaîne s jusqu'au caractère '\0'
-- compte le nombre de caractères
+- parcourt la liste
+- compte chaque élément
 
 Avant / Après :
-s = "Hello"
-ft_strlen(s) → retourne 5
+lst = [A]->[B]->[C]
+ft_lstsize(lst) → 3
 */
+

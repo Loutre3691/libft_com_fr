@@ -6,23 +6,22 @@
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 13:31:51 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/11/07 12:17:39 by fde-chec         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:40:02 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-	DESCRIPTION :
-	La  fonction  memchr() examine les n premiers octets de la zone mémoire
-    pointée par  s  à  la  recherche  du  caractère  c.  Le  premier  octet
-    correspondant   à   c   (interprété  comme  un  unsigned  char)  arrête
-    l’opération.
-
-	RETURN VALUE:
-	Renvoient un pointeur  sur  l’octet correspondant, 
-	ou NULL si le caractère n’est pas présent dans la zone de mémoire concernée.
-*/
-
+/**
+ * @brief Cherche un caractère dans une zone mémoire.
+ * 
+ * Examine les n premiers octets de la zone mémoire et retourne un pointeur
+ * sur la première occurrence du caractère c.
+ * 
+ * @param s Pointeur sur la zone mémoire
+ * @param c Caractère à chercher
+ * @param n Nombre d'octets à examiner
+ * @return Pointeur sur la première occurrence, NULL si non trouvé
+ */
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;
@@ -36,3 +35,14 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (0);
 }
+
+
+/*
+- parcourt les n premiers octets de s
+- si un octet correspondant à c est trouvé → retourne pointeur vers cet octet
+- sinon → retourne NULL
+
+Avant / Après :
+tab = {1,2,3,4,5};
+ft_memchr(tab, 3, 5) → pointe vers tab[2]
+*/

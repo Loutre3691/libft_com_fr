@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 12:12:14 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/12/02 15:29:17 by fde-chec         ###   ########.fr       */
+/*   Created: 2025/11/10 21:40:08 by fde-chec          #+#    #+#             */
+/*   Updated: 2025/12/02 15:38:46 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /**
- * @brief Calcule la longueur d'une chaîne.
+ * @brief Ajoute un élément au début d'une liste chaînée.
  * 
- * @param s Chaîne à mesurer
- * @return Nombre de caractères avant le caractère nul
+ * @param lst Pointeur sur le pointeur de la liste chaînée
+ * @param new Nouvel élément à ajouter au début
+ * @return Aucune valeur retournée (void)
  */
-size_t	ft_strlen(const char *s)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 
-/*
-- parcourt la chaîne s jusqu'au caractère '\0'
-- compte le nombre de caractères
+ /*
+- nouveau->next = *lst
+- *lst = nouveau
 
 Avant / Après :
-s = "Hello"
-ft_strlen(s) → retourne 5
+lst = [A]->[B]->[C]
+new = [X]->NULL
+ft_lstadd_front(&lst, new) → [X]->[A]->[B]->[C]
 */

@@ -6,22 +6,21 @@
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 17:29:11 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/11/09 19:53:18 by fde-chec         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:34:54 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-	DESCRIPTION :
-	Alloue la mémoire nécessaire pour un tableau de nmemb éléments
-    de  size  octets, Cette zone est remplie avec des zéros. evite des bugs
-	lies a des variables non initialisees.
-	
-	RETURN VALUE :
-	Un pointeur de la mémoire allouée. Si elles  échouent, elles 
-	renvoient NULL.
-*/
-
+/**
+ * @brief Alloue dynamiquement une zone mémoire initialisée à zéro.
+ * 
+ * Alloue de la mémoire pour un tableau de nmemb éléments de size octets
+ * et initialise tous les octets à zéro.
+ * 
+ * @param nmemb Nombre d'éléments
+ * @param size Taille de chaque élément en octets
+ * @return Pointeur sur la mémoire allouée, NULL si l'allocation échoue
+ */
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*str;
@@ -36,20 +35,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ft_bzero(str, total);
 	return (str);
 }
-// ligne 30 : verifie l'overflow
-// #include <stdlib.h>
-// #include <stdio.h>
-// int main(void)
-// {
-// 	void *ptr;
-// 	int taille;
-// 	taille = 410;
-// 	ptr = ft_calloc(taille, sizeof(int));
-// 	while(taille)
-// 	{
-// 		printf("%d\n", *(int *)ptr);
-// 		ptr++;
-// 		taille--;
-// 	}
-// 	return 0;
-// }
+
+/*
+- vérifie les dépassements d'entier lors du calcul de la taille totale
+- alloue dynamiquement nmemb * size octets
+- initialise toute la mémoire à zéro avec ft_bzero
+- retourne un pointeur vers la mémoire allouée, ou NULL si l'allocation échoue
+*/

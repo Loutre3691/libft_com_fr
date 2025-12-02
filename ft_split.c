@@ -5,18 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/06 11:12:30 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/11/12 13:51:23 by fde-chec         ###   ########.fr       */
+/*   Created: 2025/12/02 14:53:53 by fde-chec          #+#    #+#             */
+/*   Updated: 2025/12/02 15:44:01 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-	DESCRIPTION
-		Diviser une string en plusieurs array selon un separateur c 
-	RETURN
-		Un tableau de nouvelles string resultant de la divison,
-		NULL si l allocation echoue.
-*/
 
 #include "libft.h"
 
@@ -77,7 +69,6 @@ static char	**ft_spliting(char **array, char const *s, char c)
 			j++;
 		}
 	}
-	array[j] = NULL;
 	return (array);
 }
 
@@ -101,42 +92,35 @@ static size_t	ft_count_word(const char *s, char c)
 	return (count);
 }
 
+/**
+ * @brief Divise une chaîne en un tableau de sous-chaînes selon un séparateur.
+ * 
+ * @param s Chaîne à diviser
+ * @param c Caractère séparateur * @return Tableau de chaînes allouées, 
+ * NULL si l'allocation échoue */
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
 	int		i;
 
 	i = 0;
-	if (!s || !c)
+	if (!s)
 		return (NULL);
-	array = ft-calloc((ft_count_word(s, c) + 1), sizeof(char *));
+	array = ft_calloc((ft_count_word(s, c) + 1), sizeof(char *));
 	if (!array)
 		return (NULL);
 	array = ft_spliting(array, s, c);
 	return (array);
 }
-
 /*
-	ligne 30 :
-	word = ft_calloc((end - start + 1)), sizeof(char*);
- 	evite de mettre > word[i] = '\0';
-	appelle la fonction calloc et evite l overflow.
- 
-	EXEMPLE
-		char *str = "Hello world 42Libft";
-		char **tab = ft_split(str, ' ');
+- compte le nombre de mots séparés par c (ft_count_word)
+- alloue un tableau de chaînes pour chaque mot + NULL
+- parcourt s et pour chaque mot :
+    - copie le mot dans une nouvelle chaîne
+    - place le mot dans le tableau
+- retourne le tableau complet
 
-		for (int i = 0; tab[i]; i++)
-   		printf("%s\n", tab[i]);
-	
-	RESULTAT
-		Hello
-		world
-		42Libft
-
-	EXPLICATION
-		La fonction coupe str a chaque ' '
-		Les mots consecutifs sont stockes dans un tableau
-		Le tableau se termine par NULL	
-
-	*/	
+Avant / Après :
+s = "hello world 42", c = ' ';
+ft_split(s, c) → ["hello", "world", "42", NULL]
+*/

@@ -6,20 +6,17 @@
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/28 13:04:52 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/11/05 12:14:59 by fde-chec         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:38:59 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-	DESCRIPTION :
-	Vérifie si l’on a un chiffre (0 à 9).
-
-	RETURN VALUE:
-	Les  valeurs  renvoyées sont non nulles si le caractère c entre dans la
-    catégorie testée, et zéro sinon.
-*/
-
+/**
+ * @brief Vérifie si un caractère est un chiffre (0-9).
+ * 
+ * @param c Caractère à vérifier
+ * @return Valeur non nulle si c est un chiffre, 0 sinon
+ */
 int	ft_isdigit(int c)
 {
 	if ((c >= '0' && c <= '9'))
@@ -27,3 +24,4 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
+

@@ -1,0 +1,48 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstclear.c_bonus                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/11 16:15:34 by fde-chec          #+#    #+#             */
+/*   Updated: 2025/12/02 15:37:13 by fde-chec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+/**
+ * @brief Supprime et libère un élément et tous ses successeurs.
+ * 
+ * Libère l'élément passé en paramètre et tous les éléments suivants de la liste.
+ * 
+ * @param lst Pointeur sur le pointeur de l'élément à supprimer
+ * @param del Fonction de suppression pour libérer le contenu
+ * @return Aucune valeur retournée (void)
+ */
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	t_list	*tmp;
+
+	if (!lst || !*lst || !del)
+		return ;
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = tmp;
+	}
+	*lst = NULL;
+}
+/*
+- parcourt la liste
+- pour chaque nœud :
+    - applique del sur content
+    - libère le nœud
+- met *lst = NULL
+
+Avant / Après :
+lst = [A]->[B]->[C]
+ft_lstclear(&lst, del) → lst = NULL
+*/

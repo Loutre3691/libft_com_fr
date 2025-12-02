@@ -6,24 +6,21 @@
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 15:35:05 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/11/11 17:28:20 by fde-chec         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:47:05 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-	DESCRIPTION 
-		La fonction `ft_strnstr` recherche **la première occurrence** de la
-		chaîne `s2` dans la chaîne `s1`, mais **uniquement dans les `n` premiers 
-		caractères** de `s1`.
-		
-	RETURN 
-	Un pointeur vers le **début de la première occurrence** de `s2` dans `s1` 
-	(si trouvée).
-  	NULL` si `s2` n’est pas trouvée dans les `n` premiers caractères de `s1`.
- 	Si `s2` est une chaîne vide, la fonction retourne `s1`.
-*/
-
+/**
+ * @brief Cherche une sous-chaîne dans une chaîne (limite de taille).
+ * 
+ * Cherche la première occurrence de little dans big, dans les len premiers caractères.
+ * 
+ * @param big Chaîne à parcourir
+ * @param little Sous-chaîne à chercher
+ * @param len Nombre maximum de caractères à examiner
+ * @return Pointeur sur la première occurrence, NULL si non trouvée
+ */
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
@@ -48,12 +45,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
-//  #include <stdio.h>
-//  #include <bsd/string.h>
-//  int main()
-//  {
-// 	char	*big = "salut ca va";
-// 	char	*little = "lut";
 
-// 	return 0;	
-// }
+/*
+- cherche la première occurrence de la chaîne needle dans haystack
+- ne parcourt que les n premiers caractères de haystack
+- retourne un pointeur vers le début de l’occurrence trouvée ou NULL si non trouvé
+
+Avant / Après :
+haystack = "Hello World", needle = "World", n = 11
+ft_strnstr(haystack, needle, 11) → retourne pointeur vers 'W' dans haystack
+*/

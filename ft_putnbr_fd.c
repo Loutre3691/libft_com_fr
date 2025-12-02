@@ -6,18 +6,18 @@
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 22:33:07 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/11/10 13:19:03 by fde-chec         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:41:36 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-	DESCRIPTION
-		Utilisation fonction write, dans le
-		file descriptor specifie.
-	RETURN
-		Rien
-*/
+/**
+ * @brief Écrit un entier dans un file descriptor.
+ * 
+ * @param n Entier à écrire
+ * @param fd File descriptor (descripteur de fichier)
+ * @return Aucune valeur retournée (void)
+ */
 void	ft_putnbr_fd(int n, int fd)
 {
 	long int	nbr;
@@ -41,3 +41,14 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(nbr % 10, fd);
 	}
 }
+
+/*
+- convertit n en caractères
+- écrit chaque chiffre dans fd
+- gère les nombres négatifs
+
+Avant / Après :
+n = -42, fd = 1;
+ft_putnbr_fd(n, fd) → affiche "-42"
+*/
+

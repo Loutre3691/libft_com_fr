@@ -6,22 +6,22 @@
 /*   By: fde-chec <fde-chec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 17:34:31 by fde-chec          #+#    #+#             */
-/*   Updated: 2025/11/07 12:17:48 by fde-chec         ###   ########.fr       */
+/*   Updated: 2025/12/02 15:40:22 by fde-chec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-	DESCRIPTION :
-	La  fonction memcpy() copie n octets depuis la zone mémoire src vers la
-    zone mémoire dest. Les deux zones ne  doivent  pas  se  chevaucher.  Si
-    c’est le cas, utilisez plutôt memmove(3).
-
-	RETURN VALUE :
-	La fonction memcpy() renvoie un pointeur sur dest
-*/
-
+/**
+ * @brief Copie une zone mémoire dans une autre.
+ * 
+ * Copie n octets depuis src vers dest. Les zones ne doivent pas se chevaucher.
+ * 
+ * @param dest Zone mémoire destination
+ * @param src Zone mémoire source
+ * @param n Nombre d'octets à copier
+ * @return Pointeur sur dest
+ */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t	i;
@@ -36,3 +36,14 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
+
+/*
+- vérifie si dest et src ne sont pas NULL
+- copie n octets de src vers dest octet par octet
+- retourne un pointeur vers dest
+
+Avant / Après :
+src = "Hello";
+dst = "" (vide);
+ft_memcpy(dst, src, 5) → dst = "Hello"
+*/
